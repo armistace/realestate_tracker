@@ -1,5 +1,14 @@
 # Little App to track hyper local real estate prices
 
+### To run dev environment
+```
+cd realestate
+source venv/bin/activate
+export FLASK_APP=realestate.py
+export FLASK_ENV=development
+flask run
+```
+
 This app will eventually provide a simple web app to track and analyse real estate prices and a hyper local level
 
 currently requires

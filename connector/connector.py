@@ -23,10 +23,21 @@ class connection():
             sys.exit(1)
         
         self.cursor = conn.cursor(dictionary=True)
+        self.conn = conn
 
     def dict_select(self, sql):
         self.cursor.execute(sql)
         return self.cursor.fetchall()
+
+    def insert_select(self, sql):
+        self.cursor.execute(sql)
+
+    def insert_suburb(self, suburb):
+        sql = "INSERT INTO realestate.SUBURB (SUBURB_NAME) VALUES ('" + suburb + "')"
+        print(sql)
+        self.cursor.execute(sql,suburb)
+        self.conn.commit()
+
 
     def get_houses(self):
         sql =   '''
@@ -34,3 +45,4 @@ class connection():
                 '''
         self.cursor.execute(sql)
         return self.cursor.fetchall()
+
