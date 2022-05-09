@@ -1,4 +1,4 @@
-<form action="/data" method = "POST">
+<form action="/data_houses" method = "POST">
     <p>Our Estimated Price <input type = "text" name = "est_price" /></p>
     <p>Owner Expected Price <input type = "text" name = "own_exp_price" /></p>
     <p>Actual Sold Price <input type = "text" name = "act_sold_price" /></p>
@@ -11,8 +11,23 @@
     <p>Pool? <input type = "text" name = "pool" /></p>
     <p>Bedrooms <input type = "text" name = "no_bedrooms" /></p>
     <p>Land Size <input type = "text" name = "land_size" /></p>
-    <p>Whats Our Rating (out of 5) <input type = "text" name = "rating" /></p>
+    <p>Whats Our Rating (out of 5)</p>
+        {% for rating in ratings %}
+            {% for key, value in rating.items() %}
+            <input type = "radio" id="{{value}}" name = "ratings" value = "{{value}}" />
+            <label for="{{value}}">{{value}}</label><br>
+            {% endfor %}
+        {% endfor %}
+
+    
     <p>Bedrooms <input type = "text" name = "no_bedrooms" /></p>
-    <p>Suburb <input type = "text" name = "suburb" /></p>
+    <p>Suburb </p>
+        {% for suburb in suburbs %}
+            {% for key, value in suburb.items() %}
+            <input type = "radio" id="{{value}}" name = "suburbs" value = "{{value}}" />
+            <label for="{{value}}">{{value}}</label><br>
+            {% endfor %}
+        {% endfor %}
+    
     <p><input type = "submit" value = "Submit" /></p>
 </form>

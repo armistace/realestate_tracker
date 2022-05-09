@@ -12,10 +12,16 @@ app = Flask(__name__)
 #         return_string = return_string + result + " | "
 #     return return_string
 
+@app.route('/')
+def root():
+    return render_tempate('index.html')
 
 @app.route('/houses')
 def houses():
-    return render_template('houses.html')
+    conn = connector.connection()
+    ratings=conn.get_ratings()
+    suburbs=conn.get_subrubs()
+    return render_template('houses.html', ratings=ratings, suburbs=suburbs)
 
 @app.route('/suburbs')
 def suburbs():
@@ -32,6 +38,7 @@ def data_houses():
         return f"The URL /data_houses is accessed directly. Try going to '/houses' to submit form"
     if request.method == 'POST':
         form_data = request.form
+        
         return render_template('data_houses.html',form_data = form_data)
 
 
@@ -41,6 +48,10 @@ def data_ratings():
         return f"The URL /data_ratings is accessed directly. Try going to '/ratings' to submit form"
     if request.method == 'POST':
         form_data = request.form
+        rating = str(form_data['rating'])
+        print("Inserting " + rating + "into db")
+        conn = connector.connection()   
+        conn.insert_ratings(rating)  
         return render_template('data_ratings.html',form_data = form_data)
 
 

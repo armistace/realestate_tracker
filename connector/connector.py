@@ -35,7 +35,13 @@ class connection():
     def insert_suburb(self, suburb):
         sql = "INSERT INTO realestate.SUBURB (SUBURB_NAME) VALUES ('" + suburb + "')"
         print(sql)
-        self.cursor.execute(sql,suburb)
+        self.cursor.execute(sql, suburb)
+        self.conn.commit()
+
+    def insert_ratings(self, rating_type):
+        sql = "INSERT INTO realestate.RATING (RATING_TYPE) VALUES ('" + rating_type + "')"
+        print(sql)
+        self.cursor.execute(sql, rating_type)
         self.conn.commit()
 
 
@@ -45,4 +51,19 @@ class connection():
                 '''
         self.cursor.execute(sql)
         return self.cursor.fetchall()
+
+    def get_ratings(self):
+        sql =   '''
+                    SELECT RATING_TYPE FROM RATING
+                '''
+        self.cursor.execute(sql)
+        return self.cursor.fetchall()
+
+    def get_subrubs(self):
+        sql =   '''
+                    SELECT SUBURB_NAME FROM SUBURB
+                '''
+        self.cursor.execute(sql)
+        return self.cursor.fetchall()
+
 
