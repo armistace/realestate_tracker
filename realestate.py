@@ -14,7 +14,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def root():
-    return render_tempate('index.html')
+    return render_template('index.html')
 
 @app.route('/houses')
 def houses():
@@ -38,7 +38,9 @@ def data_houses():
         return f"The URL /data_houses is accessed directly. Try going to '/houses' to submit form"
     if request.method == 'POST':
         form_data = request.form
-        
+        print ("Addind house data to DB")
+        conn = connector.connection()
+        conn.insert_houses(form_data)
         return render_template('data_houses.html',form_data = form_data)
 
 
@@ -53,7 +55,6 @@ def data_ratings():
         conn = connector.connection()   
         conn.insert_ratings(rating)  
         return render_template('data_ratings.html',form_data = form_data)
-
 
 @app.route('/data_suburbs', methods = ['POST', 'GET'])
 def data_suburbs():

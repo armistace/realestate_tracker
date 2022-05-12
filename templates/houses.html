@@ -5,7 +5,6 @@
     <p>Last Sold Price <input type = "text" name = "last_sold_price" /></p>
     <p>Years Since Last Bought <input type = "text" name = "years_since_last_bought" /></p>
     <p>Listing Web Link <input type = "text" name = "listing_web_link" /></p>
-    <p>Bedrooms <input type = "text" name = "no_bedrooms" /></p>
     <p>Study? <input type = "text" name = "study" /></p>
     <p>Living Areas <input type = "text" name = "living_areas" /></p>
     <p>Pool? <input type = "text" name = "pool" /></p>
@@ -13,21 +12,17 @@
     <p>Land Size <input type = "text" name = "land_size" /></p>
     <p>Whats Our Rating (out of 5)</p>
         {% for rating in ratings %}
-            {% for key, value in rating.items() %}
-            <input type = "radio" id="{{value}}" name = "ratings" value = "{{value}}" />
-            <label for="{{value}}">{{value}}</label><br>
+            {% for key, value in rating.items() %}                            
+                <input type = "radio" id="{{value}}" name = "ratings" value = "{{value}}" />
+                <label for="{{value}}">{{value}}</label><br>
             {% endfor %}
         {% endfor %}
-
-    
-    <p>Bedrooms <input type = "text" name = "no_bedrooms" /></p>
     <p>Suburb </p>
         {% for suburb in suburbs %}
             {% for key, value in suburb.items() %}
-            <input type = "radio" id="{{value}}" name = "suburbs" value = "{{value}}" />
-            <label for="{{value}}">{{value}}</label><br>
+                <input type = "radio" id="{{value}}" name = "suburbs" value = "{{value}}" />
+                <label for="{{value}}">{{value}}</label><br>
             {% endfor %}
         {% endfor %}
-    
     <p><input type = "submit" value = "Submit" /></p>
 </form>
