@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Form(idab)less</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel="stylesheet" href="/static/style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<body>
+  <fieldset>
+    <legend>Suburbs</legend>
+    <form action="/data_suburbs" method = "POST">
+      <section class="inputLabel">
+        <input type="text" onkeyup="this.setAttribute('value', this.value)" name='suburb'>
+        <label>Add a Suburb</label>
+      </section>
+      <section>
+        <input type = "submit" value = "Submit" /></p>
+      </section>
+  </form>
+
+  </fieldset>
+  <fieldset>
+    <legend>Ratings</legend>
+      <form action="/data_ratings" method = "POST">
+        <section class="inputLabel">
+          <input type="text" onkeyup="this.setAttribute('value', this.value)" name="rating">
+          <label>Add a Rating</label>
+        </section>
+        <section>
+          <input type = "submit" value = "Submit" /></p>
+        </section>
+    </form>
+  </fieldset>
+  <fieldset>
+    <legend>Houses</legend>
+      <form action="/data_houses" method = "POST">
+        <section class="inputLabel">
+          <input type="number" onkeyup="this.setAttribute('value', this.value)" name = "est_price">
+          <label>Our Estimated Price</label>
+        </section>
+        <section class="inputLabel">
+          <input type="number" onkeyup="this.setAttribute('value', this.value)" name = "own_exp_price">
+          <label>Owner Expected Price </label>
+        </section>
+        <section class="inputLabel">
+          <input type="number" onkeyup="this.setAttribute('value', this.value)" name = "act_sold_price">
+          <label>Actual Sold Price</label>
+        </section>
+        <section class="inputLabel">
+          <input type="number" onkeyup="this.setAttribute('value', this.value)" name = "last_sold_price">
+          <label>Last Sold Price</label>
+        </section>
+        <section class="inputLabel">
+          <input type="number" onkeyup="this.setAttribute('value', this.value)" name = "years_since_last_bought">
+          <label>Years Since Last Bought</label>
+        </section>
+        <section class="inputLabel">
+          <input type="text" onkeyup="this.setAttribute('value', this.value)" name = "listing_web_link">
+          <label>Listing Web Link </label>
+        </section>
+        <section class="inputLabel">
+          <input type="number" onkeyup="this.setAttribute('value', this.value)" name = "living_areas" >
+          <label>Living Areas </label>
+        </section>
+        <section class="inputLabel">
+          <input type="number" onkeyup="this.setAttribute('value', this.value)" name = "no_bedrooms" >
+          <label>Bedrooms</label>
+        </section>
+        <section class="inputLabel">
+          <input type="number" onkeyup="this.setAttribute('value', this.value)" name = "land_size" >
+          <label>Land Size </label>
+        </section>
+        <section>
+          <h3>Study</h3>
+          <input type="radio" name="study" id="yess" value=1 >
+          <label for="yess">Yes</label>
+          <input type="radio" name="study" id="nos" value = 0>
+          <label for="nos">No</label>
+        </section>
+        <section>
+          <h3>Pool</h3>
+          <input type="radio" name="pool" id="yesp" value=1 >
+          <label for="yesp">Yes</label>
+          <input type="radio" name="pool" id="nop" value = 0>
+          <label for="nop">No</label>
+        </section>
+        <section>
+          <h3>Suburb</h3>
+            {% for suburb in suburbs %}
+                {% for key, value in suburb.items() %}
+                    <input type = "radio" id="{{value}}" name = "suburbs" value = "{{value}}" />
+                    <label for="{{value}}">{{value}}</label><br>
+                {% endfor %}
+            {% endfor %}
+        </section>
+        <section>
+          <h3>Our Rating</h3>
+            {% for rating in ratings %}
+                {% for key, value in rating.items() %}                            
+                    <input type = "radio" id="{{value}}" name = "ratings" value = "{{value}}" />
+                    <label for="{{value}}">{{value}}</label><br>
+                {% endfor %}
+            {% endfor %}
+        </section>
+        <section>
+          <input type="submit" value="Submit">
+        </section>
+      </form>  
+
+  </fieldset>
+
+</body>
+<!-- partial -->
+  <script  src="/static/script.js"></script>
+
+</body>
+</html>
